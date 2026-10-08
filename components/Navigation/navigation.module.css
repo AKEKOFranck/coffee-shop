@@ -1,0 +1,200 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  color: var(--white);
+}
+
+.navbar {
+  width: min(100% - 60px, 1400px);
+  min-height: 100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* ---------- LOGO ---------- */
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logoImage {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.logo:hover .logoImage {
+  transform: scale(1.04);
+}
+
+/* À activer uniquement si ton logo est foncé et doit être blanc sur le hero :
+   className={`${styles.logoImage} ${styles.logoWhite}`} */
+.logoWhite {
+  filter: brightness(0) invert(1);
+}
+
+/* ---------- NAV DESKTOP ---------- */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.desktopNav a {
+  position: relative;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+.desktopNav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 0;
+  height: 1px;
+  background: var(--white);
+  transition: width 0.25s ease;
+}
+
+.desktopNav a:hover {
+  color: var(--white);
+}
+
+.desktopNav a:hover::after {
+  width: 100%;
+}
+
+/* ---------- ACTIONS ---------- */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.orderButton {
+  min-height: 44px;
+  padding: 0 19px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--brown);
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.orderButton:hover {
+  background: var(--pink-soft);
+  transform: translateY(-2px);
+}
+
+.orderButton svg {
+  width: 15px;
+  height: 15px;
+}
+
+.menuButton {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--brown);
+  cursor: pointer;
+}
+
+.menuButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1050px) {
+  .desktopNav {
+    gap: 20px;
+  }
+
+  .navbar {
+    width: min(100% - 40px, 1400px);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 850px) {
+  .desktopNav,
+  .orderButton {
+    display: none;
+  }
+
+  .navbar {
+    min-height: 80px;
+  }
+
+  .menuButton {
+    display: flex;
+  }
+
+  .logoImage {
+    height: 46px;
+  }
+
+  .mobileMenu {
+    position: absolute;
+    top: 80px;
+    left: 14px;
+    right: 14px;
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+    border-radius: 18px;
+    background: var(--white);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobileMenu a {
+    padding: 15px 5px;
+    border-bottom: 1px solid var(--border);
+    color: var(--brown);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .mobileMenu a:last-child {
+    border-bottom: 0;
+  }
+
+  .mobileMenu .mobileOrder {
+    margin-top: 12px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-bottom: 0;
+    border-radius: 999px;
+    background: var(--pink);
+    color: var(--white);
+  }
+}
